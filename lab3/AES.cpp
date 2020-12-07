@@ -440,7 +440,6 @@ void decrypt(const unsigned char *cipher_text, const unsigned char *key, unsigne
 	get_keys(key_array, extend_key_array);
 
 
-
 	//开始解密过程
 	//1、解密先进行加密的最后一轮，不需要列混淆
 
@@ -449,7 +448,7 @@ void decrypt(const unsigned char *cipher_text, const unsigned char *key, unsigne
 	right_shift_row((unsigned int *)cipher_array);
 
 	cipher_S_Sub((unsigned char *)cipher_array);
-
+	
 
 	//2、进入前9轮(共10轮)循环
 	for (int i = 9; i > 0; i--)
@@ -524,11 +523,11 @@ int main()
 	print_text(cipher_text_2, 16);
 
 	//AES解密
-	decrypt(cipher_text_2, key, de_cipher_text_2);
+	decrypt(cipher_text_2, key_2, de_cipher_text_2);
 
 	//明文输出
 	cout << "解密后的明文2为：" << endl;
-	print_text(plain_text_2, 16);
+	print_text(de_cipher_text_2, 16);
 
 	return 0;
 }
